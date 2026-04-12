@@ -18,7 +18,7 @@ for i in range(qtde_participantes):
 
 
 for tema, nome in temas.items(): #tema: chave - nome: valor --> dic: temas
-    print(f"{tema}: {', '.join(nome)}")
+    print(f"{tema}: {''.join(nome)}")
 
 
 
