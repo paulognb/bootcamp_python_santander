@@ -1,7 +1,4 @@
 
-
-
-
 def exibir_menu():
     print(" MENU ".center(30,"=" ))
 
@@ -103,17 +100,12 @@ def cadastrar_cliente(cli):
         return cli
     
 
-
-
-
 def cadastrar_conta(agencia,num_conta,cli):
     conta = dict()
     is_client_valid = False
     cpf = input("Digite seu cpf: ")
 
-
-
-    for cliente_key in cli.keys():
+    for cliente_key in cli:
         if cliente_key == cpf:
             is_client_valid = True
             num_conta += 1
@@ -131,18 +123,23 @@ def listar_contas(contas_cadastradas,cli):
 
     for conta, dados  in contas_cadastradas.items():
         agencia = dados['conta']['agencia']
+        # print(agencia)
         
         cpf_titular = dados['conta']['titular']
+        # print(cpf_titular)
 
         for cpf in cli:
             if cpf_titular == cpf:
                 titular = cli[cpf_titular]['nome']
+                # print(titular)
 
+        print("=".center(30,"="))
         print(f"""\n
-            Agencia: {agencia}
-            C/C: {conta}
-            Titular: {titular}
+    Agencia: {agencia}
+    C/C: {conta}
+    Titular: {titular}
         """)
+        print("=".center(30,"="))
 
 def listar_clientes(cli):
     cpf_consulta = input("Digite o cpf: ")
@@ -155,7 +152,6 @@ def listar_clientes(cli):
     Endereço: {cli[cpf_consulta]['endereco']}
             """)
             
-
 
 def main():
 
@@ -219,12 +215,12 @@ def main():
 
             case 7:
                 print(" LISTAR CONTAS ".center(30,"="))
+                # print(contas)
                 listar_contas(contas,clientes)
             
             case 8:
                 print(" LISTAR CLIENTES ".center(30,"="))
                 listar_clientes(clientes)
-
-            
+        
 
 main()
