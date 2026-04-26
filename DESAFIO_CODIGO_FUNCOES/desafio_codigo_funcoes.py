@@ -1,7 +1,3 @@
-qtde_pacientes = int(input("Digite a quantidade de pacientes: "))
-pacientes = dict()
-
-
 def adicionar_paciente(nome,idade,status):
     pacientes[nome]={'idade':idade,'status':status}
 
@@ -14,20 +10,19 @@ def ordena_paciente_normal(lista_normais):
     print(lista_normais.sorted())
 
 
+qtde_pacientes = int(input().strip())
+pacientes = dict()
 
 for i in range(0,qtde_pacientes):
-    print(f"Paciente {i+1}")
-    nome_paciente = input("Nome do paciente: ")
-    idade = int(input("Idade do paciente: "))
-    status = input("Informar o tipo de atendimento (URGENTE ou NORMAL): ")
+#     print(f"Paciente {i+1}")
+    nome_paciente, idade, status= input().strip().split(", ")
+    status = status.lower()
+    idade = int(idade)
     adicionar_paciente(nome_paciente,idade,status)
 
-
-print(pacientes)
+# print(pacientes)
 
 lista_pacientes = []
-
-print(lista_pacientes)
 
 for chave,valores in pacientes.items():
 
@@ -41,9 +36,11 @@ for chave,valores in pacientes.items():
 #dupla ordenação da lista pelo status (ordem alfabetica decrescente) e idade (ordem decrescente)
 
 lista_pacientes.sort(key=lambda x:(x['status'],x['idade']),reverse=True)
+# print(lista_pacientes)
 
-
-print(lista_pacientes)
-
+nomes = []
 for i in lista_pacientes:
-    print(i['nome'],end=", ")
+    nomes.append(i['nome'])
+
+resultado = ", ".join(nomes)
+print(f"Ordem de Atendimento: {resultado}")
