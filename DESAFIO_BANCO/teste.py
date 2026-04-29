@@ -15,4 +15,4 @@ print(lista_dict)
 
 lista_dict.sort(key=lambda x:x[1][1],reverse=True)
 
-print(lista_dict)
+print(lista_dict.split())
